@@ -8,7 +8,7 @@ return array(
     'tx_realty_configcheck' => $extensionPath . 'class.tx_realty_configcheck.php',
     'tx_realty_ajax_districtselector' => $extensionPath . 'Ajax/class.tx_realty_Ajax_DistrictSelector.php',
     'tx_realty_configuration_realurl_configuration' => $extensionPath . 'Configuration/RealUrl/Configuration.php',
-    'tx_realty_backend_module' => $extensionPath . 'BackEnd/class.tx_realty_BackEnd_Module.php',
+    'backendmodul' => $extensionPath . 'Classes/BackendModul.php',
     'tx_realty_mapper_document' => $extensionPath . 'Mapper/Document.php',
     'tx_realty_mapper_image' => $extensionPath . 'Mapper/Image.php',
     'tx_realty_mapper_city' => $extensionPath . 'Mapper/class.tx_realty_Mapper_City.php',

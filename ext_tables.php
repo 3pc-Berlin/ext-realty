@@ -10,7 +10,7 @@ $extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)
     array(
         'LLL:EXT:realty/Resources/Private/Language/locallang_db.xlf:tt_content.list_type_pi1',
         $_EXTKEY . '_pi1',
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'ext_icon.gif',
+        'EXT:' . $_EXTKEY . '/ext_icon.svg',
     ),
     'list_type'
 );
@@ -21,10 +21,17 @@ if (TYPO3_MODE === 'BE') {
     $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['tx_realty_pi1_wizicon']
         = $extPath . 'pi1/class.tx_realty_pi1_wizicon.php';
 
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModulePath(
-        'web_txrealtyM1', \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'BackEnd/'
-    );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModule(
-        'web', 'txrealtyM1', '', \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'BackEnd/'
+        'web',
+        'txrealtyM1',
+        '',
+        '',
+        array(
+            'routeTarget' => 'BackendModul::mainAction',
+            'access' => 'user,group',
+            'name' => 'web_txrealtyM1',
+            'icon' => 'EXT:realty/ext_icon.svg',
+            'labels' => 'LLL:EXT:realty/Resources/Private/Language/locallang_mod.xlf'
+        )
     );
 }
