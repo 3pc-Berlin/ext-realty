@@ -30,8 +30,14 @@ if (TYPO3_MODE === 'BE') {
             'routeTarget' => 'BackendModul::mainAction',
             'access' => 'user,group',
             'name' => 'web_txrealtyM1',
-            'icon' => 'EXT:realty/ext_icon.svg',
-            'labels' => 'LLL:EXT:realty/Resources/Private/Language/locallang_mod.xlf'
+            #'icon' => 'EXT:realty/ext_icon.svg', // > TYPO3 8 only
+            #'labels' => 'LLL:EXT:realty/Resources/Private/Language/locallang_mod.xlf', // > TYPO3 8 only
+            'labels' => array(
+                'tabs_images' => array(
+                    'tab' => 'EXT:realty/ext_icon.svg',
+                ),
+                'll_ref' => 'LLL:EXT:realty/Resources/Private/Language/locallang_mod.xlf',
+            )
         )
     );
 }
