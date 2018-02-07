@@ -159,7 +159,7 @@ class tx_realty_pi1_ImageThumbnailsView extends tx_realty_pi1_FrontEndView
                 'height' => $containerImageConfiguration['thumbnailSizeY'] . 'c',
             ),
         );
-        return $this->cObj->IMAGE($imageConfiguration);
+        return $this->cObj->cObjGetSingle('IMAGE', $imageConfiguration);
     }
 
     /**
@@ -187,7 +187,7 @@ class tx_realty_pi1_ImageThumbnailsView extends tx_realty_pi1_FrontEndView
                 'maxH' => $configuration['lightboxSizeY'],
             ),
         );
-        $imageWithTag = $this->cObj->IMAGE($imageConfiguration);
+        $imageWithTag = $this->cObj->cObjGetSingle('IMAGE', $imageConfiguration);
 
         $imagePath = array();
         preg_match('/src="([^"]*)"/', $imageWithTag, $imagePath);

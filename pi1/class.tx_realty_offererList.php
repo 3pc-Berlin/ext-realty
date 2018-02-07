@@ -468,6 +468,6 @@ class tx_realty_offererList extends tx_realty_pi1_FrontEndView
                 'maxH' => $this->getConfValueInteger('offererImageMaxHeight'),
             ),
         );
-        return $this->cObj->IMAGE($imageConfiguration);
+        return $this->cObj->cObjGetSingle('IMAGE', $imageConfiguration);
     }
 }
