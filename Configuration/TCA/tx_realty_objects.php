@@ -213,21 +213,25 @@ return [
                     'add' => [
                         'type' => 'script',
                         'title' => 'Create new record',
-                        'icon' => 'add.gif',
+                        'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_cities',
                             'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
-                        'script' => 'wizard_add.php',
+                        'module' => [
+                            'name' => 'wizard_add',
+                        ]
                     ],
                     'edit' => [
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'script' => 'wizard_edit.php',
                         'popup_onlyOpenIfSelected' => 1,
-                        'icon' => 'edit2.gif',
+                        'icon' => 'actions-open',
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => [
+                            'name' => 'wizard_edit',
+                        ]
                     ],
                 ],
             ],
@@ -248,21 +252,25 @@ return [
                     'add' => [
                         'type' => 'script',
                         'title' => 'Create new record',
-                        'icon' => 'add.gif',
+                        'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_districts',
                             'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
-                        'script' => 'wizard_add.php',
+                        'module' => [
+                            'name' => 'wizard_add',
+                        ]
                     ],
                     'edit' => [
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'script' => 'wizard_edit.php',
                         'popup_onlyOpenIfSelected' => 1,
-                        'icon' => 'edit2.gif',
+                        'icon' => 'actions-open',
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => [
+                            'name' => 'wizard_edit',
+                        ]
                     ],
                 ],
             ],
@@ -596,21 +604,25 @@ return [
                     'add' => [
                         'type' => 'script',
                         'title' => 'Create new record',
-                        'icon' => 'add.gif',
+                        'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_apartment_types',
                             'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
-                        'script' => 'wizard_add.php',
+                        'module' => [
+                            'name' => 'wizard_add',
+                        ]
                     ],
                     'edit' => [
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'script' => 'wizard_edit.php',
                         'popup_onlyOpenIfSelected' => 1,
-                        'icon' => 'edit2.gif',
+                        'icon' => 'actions-open',
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => [
+                            'name' => 'wizard_edit',
+                        ]
                     ],
                 ],
             ],
@@ -634,21 +646,25 @@ return [
                     'add' => [
                         'type' => 'script',
                         'title' => 'Create new record',
-                        'icon' => 'add.gif',
+                        'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_house_types',
                             'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
-                        'script' => 'wizard_add.php',
+                        'module' => [
+                            'name' => 'wizard_add',
+                        ]
                     ],
                     'edit' => [
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'script' => 'wizard_edit.php',
                         'popup_onlyOpenIfSelected' => 1,
-                        'icon' => 'edit2.gif',
+                        'icon' => 'actions-open',
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => [
+                            'name' => 'wizard_edit',
+                        ]
                     ],
                 ],
             ],
@@ -773,21 +789,25 @@ return [
                     'add' => [
                         'type' => 'script',
                         'title' => 'Create new record',
-                        'icon' => 'add.gif',
+                        'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_car_places',
                             'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
-                        'script' => 'wizard_add.php',
+                        'module' => [
+                            'name' => 'wizard_add',
+                        ]
                     ],
                     'edit' => [
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'script' => 'wizard_edit.php',
                         'popup_onlyOpenIfSelected' => 1,
-                        'icon' => 'edit2.gif',
+                        'icon' => 'actions-open',
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => [
+                            'name' => 'wizard_edit',
+                        ]
                     ],
                 ],
             ],
@@ -839,21 +859,25 @@ return [
                     'add' => [
                         'type' => 'script',
                         'title' => 'Create new record',
-                        'icon' => 'add.gif',
+                        'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_pets',
                             'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
-                        'script' => 'wizard_add.php',
+                        'module' => [
+                            'name' => 'wizard_add',
+                        ]
                     ],
                     'edit' => [
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'script' => 'wizard_edit.php',
                         'popup_onlyOpenIfSelected' => 1,
-                        'icon' => 'edit2.gif',
+                        'icon' => 'actions-open',
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => [
+                            'name' => 'wizard_edit',
+                        ]
                     ],
                 ],
             ],
@@ -1077,9 +1101,14 @@ return [
                     'link' => [
                         'type' => 'popup',
                         'title' => 'Link',
-                        'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
+                        'icon' => 'actions-wizard-link',
                         'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+                        'module' => [
+                            'name' => 'wizard_element_browser',
+                            'urlParameters' => [
+                                'mode' => 'wizard'
+                            ]
+                        ]
                     ],
                 ],
             ],
