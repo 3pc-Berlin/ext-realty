@@ -11,7 +11,7 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
-use TYPO3\CMS\Core\Utility\File\BasicFileUtility;
+use TYPO3\CMS\Core\Charset\CharsetConverter;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -35,9 +35,9 @@ class tx_realty_fileNameMapper
     private $destinationPath = '';
 
     /**
-     * @var BasicFileUtility
+     * @var string
      */
-    private static $fileFunctions = null;
+    const UNSAFE_FILENAME_CHARACTER_EXPRESSION = '\\x00-\\x2C\\/\\x3A-\\x3F\\x5B-\\x60\\x7B-\\xBF';
 
     /**
      * Constructor.
@@ -89,7 +89,7 @@ class tx_realty_fileNameMapper
     private function getUniqueFileName($originalFileName)
     {
         $splittedFileName = GeneralUtility::split_fileref($originalFileName);
-        $newFileName = $this->getCleanedFileNameBody(
+        $newFileName = $this->getCleanFileName(
                 $splittedFileName['filebody']
             ) . '.' . $splittedFileName['realFileext'];
 
@@ -107,16 +107,36 @@ class tx_realty_fileNameMapper
      * [.a-zA-Z0-9_-] replaced by '_'.
      *
      * @param string $fileNameBody file name body, must not be empty
-     *
      * @return string cleaned file name body, will not be empty
+     * @deprecated Former used BasicFileUtility->cleanFileName() which itself is marked as deprecated 
      */
     private function getCleanedFileNameBody($fileNameBody)
     {
-        if (self::$fileFunctions === null) {
-            self::$fileFunctions = GeneralUtility::makeInstance(BasicFileUtility::class);
-        }
+        GeneralUtility::deprecationLog('Use method cleanFileName() instead.');
+        return $this->getCleanFileName($fileNameBody);
+    }
 
-        return self::$fileFunctions->cleanFileName($fileNameBody);
+    /**
+     * Returns a string where any character not matching [.a-zA-Z0-9_-] is substituted by '_'
+     * Trailing dots are removed
+     * From TYPO3 CMS 8 BasicFileUtility - which is marked as deprecated
+     *
+     * @param string $fileName Input string, typically the body of a filename
+     * @return string Output string with any characters not matching [.a-zA-Z0-9_-] is substituted by '_' and trailing dots removed
+     */
+    private function getCleanFileName($fileName)
+    {
+        // Handle UTF-8 characters
+        if ($GLOBALS['TYPO3_CONF_VARS']['SYS']['UTF8filesystem']) {
+            // allow ".", "-", 0-9, a-z, A-Z and everything beyond U+C0 (latin capital letter a with grave)
+            $cleanFileName = preg_replace('/[' . self::UNSAFE_FILENAME_CHARACTER_EXPRESSION . ']/u', '_', trim($fileName));
+        } else {
+            $fileName = GeneralUtility::makeInstance(CharsetConverter::class)->specCharsToASCII('utf-8', $fileName);
+            // Replace unwanted characters by underscores
+            $cleanFileName = preg_replace('/[' . self::UNSAFE_FILENAME_CHARACTER_EXPRESSION . '\\xC0-\\xFF]/', '_', trim($fileName));
+        }
+        // Strip trailing dots and return
+        return rtrim($cleanFileName, '.');
     }
 
     /**
