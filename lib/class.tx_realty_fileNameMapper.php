@@ -103,20 +103,6 @@ class tx_realty_fileNameMapper
     }
 
     /**
-     * Returns the given file name body with any character not matching
-     * [.a-zA-Z0-9_-] replaced by '_'.
-     *
-     * @param string $fileNameBody file name body, must not be empty
-     * @return string cleaned file name body, will not be empty
-     * @deprecated Former used BasicFileUtility->cleanFileName() which itself is marked as deprecated 
-     */
-    private function getCleanedFileNameBody($fileNameBody)
-    {
-        GeneralUtility::deprecationLog('Use method cleanFileName() instead.');
-        return $this->getCleanFileName($fileNameBody);
-    }
-
-    /**
      * Returns a string where any character not matching [.a-zA-Z0-9_-] is substituted by '_'
      * Trailing dots are removed
      * From TYPO3 CMS 8 BasicFileUtility - which is marked as deprecated
