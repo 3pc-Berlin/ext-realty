@@ -1,21 +1,21 @@
 <?php
 defined('TYPO3_MODE') or die('Access denied.');
 
-$extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY);
+$extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('realty');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($_EXTKEY . '_pi1',
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('realty_pi1',
     'FILE:EXT:realty/pi1/flexform_pi1_ds.xml');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
     array(
         'LLL:EXT:realty/Resources/Private/Language/locallang_db.xlf:tt_content.list_type_pi1',
-        $_EXTKEY . '_pi1',
-        'EXT:' . $_EXTKEY . '/ext_icon.svg',
+        'realty_pi1',
+        'EXT:realty/ext_icon.svg',
     ),
     'list_type'
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/', 'Realty Manager');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('realty', 'Configuration/TypoScript/', 'Realty Manager');
 
 if (TYPO3_MODE === 'BE') {
     $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['tx_realty_pi1_wizicon']
