@@ -205,7 +205,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_realty_cities',
-                'foreign_table_where' => 'AND tx_realty_cities.pid=###STORAGE_PID### ORDER BY tx_realty_cities.title',
+                'foreign_table_where' => 'ORDER BY tx_realty_cities.title',
                 'size' => 1,
                 'minitems' => 1,
                 'maxitems' => 1,
@@ -218,7 +218,6 @@ return [
                         'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_cities',
-                            'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
                         'module' => [
@@ -258,7 +257,6 @@ return [
                         'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_districts',
-                            'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
                         'module' => [
@@ -600,7 +598,7 @@ return [
                     ['', 0]
                 ],
                 'foreign_table' => 'tx_realty_apartment_types',
-                'foreign_table_where' => 'AND tx_realty_apartment_types.pid=###STORAGE_PID### ORDER BY tx_realty_apartment_types.title',
+                'foreign_table_where' => 'ORDER BY tx_realty_apartment_types.title',
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -613,7 +611,6 @@ return [
                         'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_apartment_types',
-                            'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
                         'module' => [
@@ -643,7 +640,7 @@ return [
                     ['', 0],
                 ],
                 'foreign_table' => 'tx_realty_house_types',
-                'foreign_table_where' => 'AND tx_realty_house_types.pid=###STORAGE_PID### ORDER BY tx_realty_house_types.title',
+                'foreign_table_where' => 'ORDER BY tx_realty_house_types.title',
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -656,7 +653,6 @@ return [
                         'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_house_types',
-                            'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
                         'module' => [
@@ -788,7 +784,7 @@ return [
                     ['', 0],
                 ],
                 'foreign_table' => 'tx_realty_car_places',
-                'foreign_table_where' => 'AND tx_realty_car_places.pid=###STORAGE_PID### ORDER BY tx_realty_car_places.title',
+                'foreign_table_where' => 'ORDER BY tx_realty_car_places.title',
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -801,7 +797,6 @@ return [
                         'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_car_places',
-                            'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
                         'module' => [
@@ -859,7 +854,7 @@ return [
                     ['', 0],
                 ],
                 'foreign_table' => 'tx_realty_pets',
-                'foreign_table_where' => 'AND tx_realty_pets.pid=###STORAGE_PID### ORDER BY tx_realty_pets.title',
+                'foreign_table_where' => 'ORDER BY tx_realty_pets.title',
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -872,7 +867,6 @@ return [
                         'icon' => 'actions-add',
                         'params' => [
                             'table' => 'tx_realty_pets',
-                            'pid' => '###STORAGE_PID###',
                             'setValue' => 'prepend',
                         ],
                         'module' => [
