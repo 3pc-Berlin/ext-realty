@@ -27,7 +27,7 @@ if (TYPO3_MODE === 'BE') {
         '',
         '',
         array(
-            'routeTarget' => 'BackendModul::mainAction',
+            'routeTarget' => 'tx_realty_BackendModul::mainAction',
             'access' => 'user,group',
             'name' => 'web_txrealtyM1',
             #'icon' => 'EXT:realty/ext_icon.svg', // > TYPO3 8 only

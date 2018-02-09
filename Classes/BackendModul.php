@@ -29,7 +29,7 @@ use TYPO3\CMS\Core\Cache\Frontend\AbstractFrontend as AbstractCacheFrontEnd;
  * @author Bernd Schönbach <bernd@oliverklee.de>
  *
  */
-class BackendModul extends BaseScriptClass
+class tx_realty_BackendModul extends BaseScriptClass
 {
     /**
      * The template object
