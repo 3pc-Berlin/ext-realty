@@ -244,7 +244,7 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'itemsProcFunc' => 'tx_realty_Tca->getDistrictsForCity',
+                'itemsProcFunc' => 'tx_realty_TcaUserFunc->getDistrictsForCity',
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,

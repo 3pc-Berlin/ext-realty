@@ -21,7 +21,7 @@
 class tx_realty_BackEnd_TcaTest extends Tx_Phpunit_TestCase
 {
     /**
-     * @var tx_realty_Tca
+     * @var tx_realty_TcaUserFunc
      */
     private $fixture = null;
 
@@ -33,7 +33,7 @@ class tx_realty_BackEnd_TcaTest extends Tx_Phpunit_TestCase
     protected function setUp()
     {
         $this->testingFramework = new Tx_Oelib_TestingFramework('tx_realty');
-        $this->fixture = new tx_realty_Tca();
+        $this->fixture = new tx_realty_TcaUserFunc();
     }
 
     protected function tearDown()
