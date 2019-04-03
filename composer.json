@@ -30,7 +30,7 @@
         "typo3/cms-frontend": "^6.2.0 || ^8.7.24",
         "oliverklee/oelib": "^1.3.0",
         "typo3-ter/ameos-formidable": "^2.1",
-        "sjbr/static-info-tables": "^6.cc7"
+        "sjbr/static-info-tables": "^6.7"
     },
     "replace": {
         "realty": "self.version",
