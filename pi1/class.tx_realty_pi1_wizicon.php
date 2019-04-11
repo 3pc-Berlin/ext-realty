@@ -37,12 +37,25 @@ class tx_realty_pi1_wizicon
         /** @var LanguageService $languageService */
         $languageService = $GLOBALS['LANG'];
         $wizardItems['plugins_tx_realty_pi1'] = array(
-            'icon' => ExtensionManagementUtility::extRelPath('realty') . 'pi1/ce_wiz.gif',
+            'icon' => '', // Depends on TYPO3 version - ContentElementWizard should switched to TS 
             'title' => $languageService->getLLL('pi1_title', $languageData),
             'description' => $languageService->getLLL('pi1_description', $languageData),
             'params' => '&defVals[tt_content][CType]=list&' .
                 'defVals[tt_content][list_type]=realty_pi1'
         );
+        $version8 = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch) >= \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger('8.0');
+        if ($version8) {
+            $iconIdentifier = 'ext-realty-wizard-icon';
+            $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+            $iconRegistry->registerIcon(
+                $iconIdentifier,
+                \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
+                ['source' => 'EXT:realty/pi1/ce_wiz.gif']
+            );
+            $wizardItems['plugins_tx_realty_pi1']['iconIdentifier'] = $iconIdentifier;
+        } else {
+            $wizardItems['plugins_tx_realty_pi1']['icon'] = ExtensionManagementUtility::extRelPath('realty') . 'pi1/ce_wiz.gif';
+        }
 
         return $wizardItems;
     }

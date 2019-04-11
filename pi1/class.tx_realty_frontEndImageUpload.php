@@ -259,7 +259,7 @@ class tx_realty_frontEndImageUpload extends tx_realty_frontEndForm
                     'height' => $this->getConfValueInteger('imageUploadThumbnailHeight') . 'c',
                 ),
             );
-            $imageTag = $this->cObj->IMAGE($imageConfiguration);
+            $imageTag = $this->cObj->cObjGetSingle('IMAGE', $imageConfiguration);
             $this->setMarker(
                 'single_image_item',
                 '<a href="' . $imageUrl . '" rel="lightbox[objectGallery]" ' .

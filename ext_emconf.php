@@ -32,10 +32,10 @@ $EM_CONF[$_EXTKEY] = [
     '_md5_values_when_last_written' => '',
     'constraints' => [
         'depends' => [
-            'php' => '5.5.0-7.0.99',
-            'typo3' => '6.2.0-7.9.99',
+            'php' => '5.5.0-7.1.99',
+            'typo3' => '7.6.0-8.7.99',
             'oelib' => '1.3.0-1.9.99',
-            'ameos_formidable' => '1.1.564-1.9.99',
+            'ameos_formidable' => '1.1.564-2.1.99',
             'static_info_tables' => '6.3.7-',
         ],
         'conflicts' => [
@@ -48,7 +48,7 @@ $EM_CONF[$_EXTKEY] = [
     'autoload' => [
         'classmap' => [
             'Ajax',
-            'BackEnd',
+            'Classes',
             'cli',
             'lib',
             'Mapper',

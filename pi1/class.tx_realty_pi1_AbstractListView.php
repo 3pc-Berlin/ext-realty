@@ -1284,7 +1284,7 @@ abstract class tx_realty_pi1_AbstractListView extends tx_realty_pi1_FrontEndView
         if ($id !== '') {
             $imageConfiguration['params'] = 'id="' . $id . '"';
         }
-        return $this->cObj->IMAGE($imageConfiguration);
+        return $this->cObj->cObjGetSingle('IMAGE', $imageConfiguration);
     }
 
     /**

@@ -1,0 +1,56 @@
+<!-- ###IMPORT_RESULT### -->
+<div id="importResult">
+	###IMPORT_LOGS###
+</div>
+<!-- ###IMPORT_RESULT### -->
+
+<!-- ###IMPORT_ERRORS### -->
+<div id="importErrors">
+	###MESSAGE_NO_PERMISSIONS###
+	<ul>
+		###ERROR_LIST###
+	</ul>
+</div>
+<!-- ###IMPORT_ERRORS### -->
+
+<!-- ###IMPORT_BUTTON### -->
+<div id="submitButtonContainer">
+	<div id="openImmoImportButton">
+		<form id="importForm" action="###MODULE_URL###" method="post">
+		<p>
+			<input id="importButton" type="submit" value="###LABEL_START_IMPORT###"
+				onclick="document.getElementById('importSpinner').style.display = 'block';
+					document.getElementById('importButton').disabled = true;
+					document.getElementById('importButton').style.color = '#ccc';
+					document.forms['importForm'].submit();
+					return false;"
+			/>
+			<input type="hidden" name="tab" value="###TAB_NUMBER###" />
+			<input type="hidden" name="action" value="startImport" />
+		</p>
+		</form>
+	</div>
+	<div id="importSpinner" class="fa fa-circle-o-notch fa-spin" title="###LABEL_IMPORT_IN_PROGRESS###">
+		<!-- LABEL_IMPORT_IN_PROGRESS -->
+	</div>
+</div>
+<div class="callout callout-info">
+	<div class="media">
+		<div class="media-left">
+			<span class="fa-stack fa-lg callout-icon">
+				<i class="fa fa-circle fa-stack-2x"></i>
+				<i class="fa fa-info fa-stack-1x"></i>
+			</span>
+		</div>
+		<div class="media-body">
+			<h4 class="callout-title">Compatibility with TYPO3 CMS 7.6 and 8.7</h4>
+			<div class="callout-body">
+				Currently, there is a <a href="https://docs.google.com/spreadsheets/d/1BfSmradrQMrcbnABqCpo0gGbgNpfNtGzy94Lpvd8Grk/pubhtml" target="_blank" style="text-decoration: underline;">
+				crowdfunding campaign</a> going on to fund the development work needed to make this extension compatible with TYPO3 CMS 7.6 and 8.7. If you would
+				like to see this extension work on TYPO3 CMS 7.6 and 8.7, please consider contributing to the campaign and
+				send the extension author an email: <a href="mailto:typo3-coding@oliverklee.de" style="text-decoration: underline;">typo3-coding@oliverklee.de</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ###IMPORT_BUTTON### -->

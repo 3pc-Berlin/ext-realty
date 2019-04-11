@@ -11,6 +11,9 @@
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Module\BaseScriptClass;
 use TYPO3\CMS\Backend\Template\DocumentTemplate;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -26,9 +29,17 @@ use TYPO3\CMS\Core\Cache\Frontend\AbstractFrontend as AbstractCacheFrontEnd;
  * @author Bernd Schönbach <bernd@oliverklee.de>
  *
  */
-class tx_realty_BackEnd_Module extends BaseScriptClass
+class tx_realty_BackendModul extends BaseScriptClass
 {
     /**
+     * The template object
+     * @var \TYPO3\CMS\Backend\Template\DocumentTemplate
+     */
+    public $doc;
+
+    /**
+     * The name of the module
+     * 
      * @var string
      */
     const MODULE_NAME = 'web_txrealtyM1';
@@ -51,6 +62,16 @@ class tx_realty_BackEnd_Module extends BaseScriptClass
     const IMPORT_TAB = 0;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->MCONF = array(
+            'name' => self::MODULE_NAME
+        );
+    }
+
+    /**
      * Initializes the module.
      *
      * @return void
@@ -63,19 +84,37 @@ class tx_realty_BackEnd_Module extends BaseScriptClass
     }
 
     /**
+     * Entrance from the backend module. This replace the _dispatch
+     *
+     * @param ServerRequestInterface $request The request object from the backend
+     * @param ResponseInterface $response The reponse object sent to the backend
+     *
+     * @return ResponseInterface Return the response object
+     */
+    public function mainAction(ServerRequestInterface $request, ResponseInterface $response)
+    {
+        $this->getLanguageService()->includeLLFile('EXT:realty/Resources/Private/Language/locallang_mod.xlf');
+        $this->init();
+        $this->render();
+        $response->getBody()->write($this->content);
+        return $response;
+    }
+
+    /**
      * Renders the module content.
      *
      * @return string HTML for the module, will not be empty
      */
     public function render()
     {
+        $this->content = '';
         $title = $this->translate('title');
-        $result = $this->doc->startPage($title) . $this->doc->header($title);
+        $this->content .= $this->doc->startPage($title) . $this->doc->header($title);
 
         if ($this->hasAccess()) {
-            $result .= $this->doc->section(
+            $this->content .= $this->doc->section(
                 '',
-                $this->doc->spacer(10) . $this->createTab()
+                $this->createTab()
             );
 
             if (GeneralUtility::_GP('action') == 'startImport') {
@@ -86,17 +125,16 @@ class tx_realty_BackEnd_Module extends BaseScriptClass
                     nl2br(htmlspecialchars($importer->importFromZip()))
                 );
 
-                $result .= $this->template->getSubpart('IMPORT_RESULT');
+                $this->content .= $this->template->getSubpart('IMPORT_RESULT');
             }
 
-            $result .= $this->createImportButton();
+            $this->content .= $this->createImportButton();
         } else {
-            $result .= $this->getErrorMessages();
+            $this->content .= $this->getErrorMessages();
         }
 
-        $result .= $this->doc->endPage();
-
-        return $this->doc->insertStylesAndJS($result);
+        $this->content .= $this->doc->endPage();
+        return $this->doc->insertStylesAndJS($this->content);
     }
 
     /**
@@ -110,11 +148,11 @@ class tx_realty_BackEnd_Module extends BaseScriptClass
         $this->doc->backPath = $GLOBALS['BACK_PATH'];
         $this->doc->docType = 'xhtml_strict';
         $this->doc->styleSheetFile2
-            = '../typo3conf/ext/realty/BackEnd/BackEnd.css';
+            = '../typo3conf/ext/realty/Resources/Public/Css/BackendModul.css';
 
         $this->template
             = Tx_Oelib_TemplateRegistry::getInstance()->getByFileName(
-                'EXT:realty/BackEnd/mod_template.html'
+                'EXT:realty/Resources/Private/Backend/BackendModul.html'
         );
     }
 
@@ -131,7 +169,7 @@ class tx_realty_BackEnd_Module extends BaseScriptClass
             'tab',
             self::IMPORT_TAB,
             array(self::IMPORT_TAB => $this->translate('import_tab'))
-            ) . $this->doc->spacer(5);
+            );
     }
 
     /**
@@ -273,7 +311,6 @@ class tx_realty_BackEnd_Module extends BaseScriptClass
 
         $this->template->setMarker(
             'message_no_permissions',
-            $this->doc->spacer(5) .
                 $this->translate('message_no_permission')
 
         );

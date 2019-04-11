@@ -806,7 +806,7 @@ class tx_realty_openImmoImport
             $email->setTo(array($address => ''));
             $email->setSubject($this->getTranslator()->translate('label_subject_openImmo_import'));
             $email->setBody($this->fillEmailTemplate($content));
-            $email->send();
+            $email->send(); // Returns bool @todo log errors if email was not send
         }
 
         if (!empty($addressesAndMessages)) {

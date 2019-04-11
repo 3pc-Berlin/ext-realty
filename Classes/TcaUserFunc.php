@@ -17,7 +17,7 @@
  *
  * @author Oliver Klee <typo3-coding@oliverklee.de>
  */
-class tx_realty_Tca
+class tx_realty_TcaUserFunc
 {
     /**
      * Gets the districts for a certain city.
